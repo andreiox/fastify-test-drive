@@ -14,3 +14,4 @@ Looking to accomplish the things that I am already familiar with express.
 ## references
 
 -   [fastify github page](https://github.com/fastify/fastify)
+-   [fastify testing docs](https://www.fastify.io/docs/master/Testing/)
