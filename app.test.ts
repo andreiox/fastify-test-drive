@@ -21,3 +21,31 @@ test('POST "/" should return request body', async t => {
 	t.is(response.statusCode, 200);
 	t.is(response.body, JSON.stringify(payload));
 });
+
+test('POST "/body-validation" should return 200 for valid body', async t => {
+	const app = build();
+
+	const payload = { username: 'andreiox', age: 24 };
+	const response = await app.inject({
+		method: 'POST',
+		url: '/body-validation',
+		payload,
+	});
+
+	t.is(response.statusCode, 200);
+	t.is(response.body, JSON.stringify(payload));
+});
+
+test('POST "/body-validation" should return 400 for invalid body', async t => {
+	const app = build();
+
+	const payload = { username: 'andreiox', age: 'a' };
+	const response = await app.inject({
+		method: 'POST',
+		url: '/body-validation',
+		payload,
+	});
+
+	t.is(response.statusCode, 400);
+	t.is(response.json().message, 'body.age should be number');
+});

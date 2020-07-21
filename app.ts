@@ -1,15 +1,31 @@
 import fastify from 'fastify';
 
+const userSchema = {
+	type: 'object',
+	properties: {
+		username: { type: 'string' },
+		age: { type: 'number' },
+	},
+};
+
 export default (opts = {}) => {
 	const app = fastify(opts);
 
-	app.get('/', async function (req, res) {
+	app.get('/', async (req, res) => {
 		return { hello: 'world' };
 	});
 
-	app.post('/', async function (req, res) {
+	app.post('/', async (req, res) => {
 		return req.body;
 	});
+
+	app.post(
+		'/body-validation',
+		{ schema: { body: userSchema } },
+		async (req, res) => {
+			return req.body;
+		},
+	);
 
 	return app;
 };
