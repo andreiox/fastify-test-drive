@@ -2,7 +2,7 @@ import test from 'ava';
 
 import build from './app';
 
-test('should respond hello world in root', async t => {
+test('GET "/" should return hello world', async t => {
 	const app = build();
 
 	const response = await app.inject({ method: 'GET', url: '/' });
@@ -10,4 +10,14 @@ test('should respond hello world in root', async t => {
 
 	t.is(response.statusCode, 200);
 	t.is(response.body, expected);
+});
+
+test('POST "/" should return request body', async t => {
+	const app = build();
+
+	const payload = { fastify: 'inject is great' };
+	const response = await app.inject({ method: 'POST', url: '/', payload });
+
+	t.is(response.statusCode, 200);
+	t.is(response.body, JSON.stringify(payload));
 });

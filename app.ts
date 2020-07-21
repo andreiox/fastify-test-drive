@@ -7,5 +7,9 @@ export default (opts = {}) => {
 		return { hello: 'world' };
 	});
 
+	app.post('/', async function (req, res) {
+		return req.body;
+	});
+
 	return app;
 };
