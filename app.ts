@@ -1,31 +1,6 @@
 import fastify from 'fastify';
 
-const userSchema = {
-	type: 'object',
-	properties: {
-		username: { type: 'string' },
-		age: { type: 'number' },
-	},
-	required: ['username', 'age'],
-};
-
-const headerSchema = {
-	type: 'object',
-	properties: {
-		'super-important-header': {
-			type: 'string',
-		},
-	},
-	required: ['super-important-header'],
-};
-
-const querySchema = {
-	type: 'object',
-	properties: {
-		param1: { type: 'string' },
-	},
-	required: ['param1'],
-};
+import * as schemas from './schemas';
 
 export default (opts = {}) => {
 	const app = fastify(opts);
@@ -40,7 +15,7 @@ export default (opts = {}) => {
 
 	app.post(
 		'/body-validation',
-		{ schema: { body: userSchema } },
+		{ schema: { body: schemas.userSchema } },
 		async (req, res) => {
 			return req.body;
 		},
@@ -48,7 +23,7 @@ export default (opts = {}) => {
 
 	app.get(
 		'/header-validation',
-		{ schema: { headers: headerSchema } },
+		{ schema: { headers: schemas.headerSchema } },
 		async (req, res) => {
 			return req.headers['super-important-header'];
 		},
@@ -56,7 +31,7 @@ export default (opts = {}) => {
 
 	app.get(
 		'/query-validation',
-		{ schema: { querystring: querySchema } },
+		{ schema: { querystring: schemas.querySchema } },
 		async (req, res) => {
 			return req.query;
 		},
