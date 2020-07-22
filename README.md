@@ -11,7 +11,7 @@ Looking to accomplish the things that I am already familiar with express.
         -   [x] single error message
         -   [x] multiple params error message
     -   [x] header
-    -   [ ] query params
+    -   [x] query params
     -   [ ] response
 -   [ ] Error Handling
 -   [ ] Logging

@@ -92,3 +92,27 @@ test('GET "/header-validation" should return 400 for invalid header', async t =>
 	t.is(response.statusCode, 400);
 	t.is(response.json().message, expected);
 });
+
+test('GET "/query-validation" should validate query param', async t => {
+	const app = build();
+
+	const response = await app.inject({
+		method: 'GET',
+		url: '/query-validation',
+		query: { param1: 'value1' },
+	});
+	const expected = { param1: 'value1' };
+
+	t.is(response.statusCode, 200);
+	t.deepEqual(response.json(), expected);
+});
+
+test('GET "/query-validation" should return 400 for invalid query param', async t => {
+	const app = build();
+
+	const response = await app.inject({ method: 'GET', url: '/query-validation' });
+	const expected = "querystring should have required property 'param1'";
+
+	t.is(response.statusCode, 400);
+	t.is(response.json().message, expected);
+});

@@ -19,6 +19,14 @@ const headerSchema = {
 	required: ['super-important-header'],
 };
 
+const querySchema = {
+	type: 'object',
+	properties: {
+		param1: { type: 'string' },
+	},
+	required: ['param1'],
+};
+
 export default (opts = {}) => {
 	const app = fastify(opts);
 
@@ -43,6 +51,14 @@ export default (opts = {}) => {
 		{ schema: { headers: headerSchema } },
 		async (req, res) => {
 			return req.headers['super-important-header'];
+		},
+	);
+
+	app.get(
+		'/query-validation',
+		{ schema: { querystring: querySchema } },
+		async (req, res) => {
+			return req.query;
 		},
 	);
 
