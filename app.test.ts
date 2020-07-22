@@ -133,3 +133,13 @@ test('POST "/response-schema" should return request body values based on schema'
 	t.is(response.statusCode, 200);
 	t.deepEqual(response.json(), expected);
 });
+
+test('GET "/with-error" should lower case the error message', async t => {
+	const app = build();
+
+	const response = await app.inject({ method: 'GET', url: '/with-error' });
+	const expected = 'hello error!';
+
+	t.is(response.statusCode, 500);
+	t.is(response.body, expected);
+});

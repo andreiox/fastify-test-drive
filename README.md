@@ -13,7 +13,7 @@ Looking to accomplish the things that I am already familiar with express.
     -   [x] header
     -   [x] query params
     -   [x] response
--   [ ] Error Handling
+-   [x] Error Handling
 -   [ ] Logging
 -   [ ] Endpoint Documentation
 

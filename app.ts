@@ -5,6 +5,12 @@ import * as schemas from './schemas';
 export default (opts = {}) => {
 	const app = fastify(opts);
 
+	app.setErrorHandler((err, req, res) => {
+		if (err.validation) return res.status(400).send(err);
+
+		return res.status(500).send(err.message.toLowerCase());
+	});
+
 	app.get('/', async (req, res) => {
 		return { hello: 'world' };
 	});
@@ -44,6 +50,10 @@ export default (opts = {}) => {
 			return req.body;
 		},
 	);
+
+	app.get('/with-error', async (req, res) => {
+		throw Error('Hello Error!');
+	});
 
 	return app;
 };
