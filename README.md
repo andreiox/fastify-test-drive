@@ -1,6 +1,6 @@
 # fastify-test-drive
 
-Trying fastify out.
+Taking fastify for a spin!
 
 ## requirements
 
