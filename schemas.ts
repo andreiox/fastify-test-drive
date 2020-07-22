@@ -24,3 +24,13 @@ export const querySchema = {
 	},
 	required: ['param1'],
 };
+
+export const responseSchema = {
+	200: {
+		type: 'object',
+		properties: {
+			value1: { type: 'string' },
+			value2: { type: 'boolean' },
+		},
+	},
+};

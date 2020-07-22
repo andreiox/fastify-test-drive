@@ -116,3 +116,20 @@ test('GET "/query-validation" should return 400 for invalid query param', async 
 	t.is(response.statusCode, 400);
 	t.is(response.json().message, expected);
 });
+
+test('POST "/response-schema" should return request body values based on schema', async t => {
+	const app = build();
+
+	const payload = { value1: 'string', value2: true, value3: 'hello' };
+	const response = await app.inject({
+		method: 'POST',
+		url: '/response-schema',
+		payload,
+	});
+
+	const expected = { ...payload };
+	delete expected.value3;
+
+	t.is(response.statusCode, 200);
+	t.deepEqual(response.json(), expected);
+});

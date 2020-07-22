@@ -12,7 +12,7 @@ Looking to accomplish the things that I am already familiar with express.
         -   [x] multiple params error message
     -   [x] header
     -   [x] query params
-    -   [ ] response
+    -   [x] response
 -   [ ] Error Handling
 -   [ ] Logging
 -   [ ] Endpoint Documentation
@@ -21,3 +21,4 @@ Looking to accomplish the things that I am already familiar with express.
 
 -   [fastify github page](https://github.com/fastify/fastify)
 -   [fastify testing docs](https://www.fastify.io/docs/master/Testing/)
+-   [fastify validation and serialization](https://www.fastify.io/docs/latest/Validation-and-Serialization/)

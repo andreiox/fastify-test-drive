@@ -37,5 +37,13 @@ export default (opts = {}) => {
 		},
 	);
 
+	app.post(
+		'/response-schema',
+		{ schema: { response: schemas.responseSchema } },
+		async (req, res) => {
+			return req.body;
+		},
+	);
+
 	return app;
 };
