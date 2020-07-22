@@ -49,3 +49,19 @@ test('POST "/body-validation" should return 400 for invalid body', async t => {
 	t.is(response.statusCode, 400);
 	t.is(response.json().message, 'body.age should be number');
 });
+
+test('POST "/body-validation" should return 400 and multiple error in body', async t => {
+	const app = build({ ajv: { customOptions: { allErrors: true } } });
+
+	const payload = { age: 'a' };
+	const response = await app.inject({
+		method: 'POST',
+		url: '/body-validation',
+		payload,
+	});
+	const expected =
+		"body should have required property 'username', body.age should be number";
+
+	t.is(response.statusCode, 400);
+	t.is(response.json().message, expected);
+});

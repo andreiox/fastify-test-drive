@@ -6,6 +6,7 @@ const userSchema = {
 		username: { type: 'string' },
 		age: { type: 'number' },
 	},
+	required: ['username', 'age'],
 };
 
 export default (opts = {}) => {

@@ -8,11 +8,14 @@ Looking to accomplish the things that I am already familiar with express.
 
 -   Validation
     -   [x] body
+        -   [x] single error message
+        -   [x] multiple params error message
     -   [ ] header
     -   [ ] query params
--   Error Handling
--   Logging
--   Endpoint Documentation
+    -   [ ] response
+-   [ ] Error Handling
+-   [ ] Logging
+-   [ ] Endpoint Documentation
 
 ## references
 
