@@ -10,7 +10,7 @@ Looking to accomplish the things that I am already familiar with express.
     -   [x] body
         -   [x] single error message
         -   [x] multiple params error message
-    -   [ ] header
+    -   [x] header
     -   [ ] query params
     -   [ ] response
 -   [ ] Error Handling

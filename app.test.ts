@@ -65,3 +65,30 @@ test('POST "/body-validation" should return 400 and multiple error in body', asy
 	t.is(response.statusCode, 400);
 	t.is(response.json().message, expected);
 });
+
+test('GET "/header-validation" should validate header', async t => {
+	const app = build();
+
+	const response = await app.inject({
+		method: 'GET',
+		url: '/header-validation',
+		headers: {
+			'super-important-header': 'this is important',
+		},
+	});
+	const expected = 'this is important';
+
+	t.is(response.statusCode, 200);
+	t.is(response.body, expected);
+});
+
+test('GET "/header-validation" should return 400 for invalid header', async t => {
+	const app = build();
+
+	const response = await app.inject({ method: 'GET', url: '/header-validation' });
+	const expected =
+		"headers should have required property 'super-important-header'";
+
+	t.is(response.statusCode, 400);
+	t.is(response.json().message, expected);
+});

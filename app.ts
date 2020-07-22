@@ -9,6 +9,16 @@ const userSchema = {
 	required: ['username', 'age'],
 };
 
+const headerSchema = {
+	type: 'object',
+	properties: {
+		'super-important-header': {
+			type: 'string',
+		},
+	},
+	required: ['super-important-header'],
+};
+
 export default (opts = {}) => {
 	const app = fastify(opts);
 
@@ -25,6 +35,14 @@ export default (opts = {}) => {
 		{ schema: { body: userSchema } },
 		async (req, res) => {
 			return req.body;
+		},
+	);
+
+	app.get(
+		'/header-validation',
+		{ schema: { headers: headerSchema } },
+		async (req, res) => {
+			return req.headers['super-important-header'];
 		},
 	);
 
