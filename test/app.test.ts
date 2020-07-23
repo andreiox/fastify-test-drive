@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import build from './app';
+import build from '../src/app';
 
 test('GET "/" should return hello world', async t => {
 	const app = build();
