@@ -1,9 +1,13 @@
 import fastify from 'fastify';
+import swagger from 'fastify-swagger';
 
 import * as schemas from './schemas';
+import swaggerOptions from './swagger';
 
 export default (opts = {}) => {
 	const app = fastify(opts);
+
+	app.register(swagger, swaggerOptions);
 
 	app.setErrorHandler((err, req, res) => {
 		if (err.validation) return res.status(400).send(err);
@@ -53,6 +57,11 @@ export default (opts = {}) => {
 
 	app.get('/with-error', async (req, res) => {
 		throw Error('Hello Error!');
+	});
+
+	app.ready(err => {
+		if (err) throw err;
+		app.swagger();
 	});
 
 	return app;

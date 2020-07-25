@@ -15,7 +15,7 @@ Looking to accomplish the things that I am already familiar with express.
     -   [x] response
 -   [x] Error Handling
 -   [x] Basic Logging
--   [ ] Endpoint Documentation
+-   [x] Endpoint Documentation
 
 ## references
 
@@ -23,3 +23,4 @@ Looking to accomplish the things that I am already familiar with express.
 -   [fastify testing docs](https://www.fastify.io/docs/master/Testing/)
 -   [fastify validation and serialization](https://www.fastify.io/docs/latest/Validation-and-Serialization/)
 -   [fastify logging](https://www.fastify.io/docs/latest/Logging/)
+-   [swagger documentation generator for fastify](https://github.com/fastify/fastify-swagger)
