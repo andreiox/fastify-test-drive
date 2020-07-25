@@ -2,12 +2,12 @@
 	"name": "fastify-test-drive",
 	"version": "1.0.0",
 	"description": "Trying fastify out",
-	"main": "index.js",
+	"main": "dist/server.js",
 	"scripts": {
 		"test": "ava",
 		"start": "node dist/server.js",
 		"build": "tsc",
-		"dev": "nodemon --watch '*.ts' --exec sucrase-node server.ts"
+		"dev": "nodemon --watch '*.ts' --exec sucrase-node src/server.ts"
 	},
 	"repository": {
 		"type": "git",
