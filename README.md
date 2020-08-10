@@ -20,9 +20,9 @@ Looking to accomplish the things that I am already familiar with express.
 ## docker support
 
 ```bash
-docker build -t my/fastify-test-drive
+docker build -t andreiox/fastify-test-drive .
 
-docker run --rm -p 3000:3000 my/fastify-test-drive
+docker run --rm -p 3000:3000 andreiox/fastify-test-drive
 ```
 
 ## references
