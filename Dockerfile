@@ -1,5 +1,5 @@
 # BUILDER STAGE
-FROM node:alpine as builder
+FROM node:lts-alpine as builder
 
 WORKDIR /usr/app
 
@@ -9,11 +9,11 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build && npm prune --production
+RUN npm run build
 
 
 # RUNTIME STAGE
-FROM node:alpine as runtime
+FROM node:lts-alpine as runtime
 
 WORKDIR /usr/app
 
@@ -22,5 +22,7 @@ ENV NODE_ENV=production
 COPY --from=builder "/usr/app/dist/" "/usr/app/dist/"
 COPY --from=builder "/usr/app/node_modules/" "/usr/app/node_modules/"
 COPY --from=builder "/usr/app/package.json" "/usr/app/package.json"
+
+RUN npm prune --production
 
 CMD ["npm", "start"]
