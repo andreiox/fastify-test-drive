@@ -5,11 +5,11 @@ WORKDIR /usr/app
 
 COPY package*.json ./
 
-RUN npm ci --production
+RUN npm ci
 
 COPY . .
 
-RUN npm run build
+RUN npm run build && npm prune --production
 
 
 # RUNTIME STAGE
